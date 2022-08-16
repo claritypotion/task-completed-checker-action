@@ -3197,7 +3197,9 @@ function run() {
             return;
         }
         const result = utils_1.removeIgnoreTaskLitsText(body);
-        const isTaskCompleted = result.match(/(- \[[ ]\].+)/g) === null;
+        const incompletedMatches = result.match(/(- \[[ ]\].+)/g);
+        console.log({ incompletedMatches });
+        const isTaskCompleted = incompletedMatches === null;
         if (!isTaskCompleted)
             core.setFailed("Not all tasks completed");
     });
