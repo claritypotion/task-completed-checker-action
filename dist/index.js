@@ -3196,7 +3196,6 @@ function run() {
         if (!body) {
             return;
         }
-        console.log({ body });
         const result = utils_1.removeIgnoreTaskLitsText(body);
         const incompletedMatches = result.match(/(- \[[ ]\].+)/g);
         console.log({ incompletedMatches });
