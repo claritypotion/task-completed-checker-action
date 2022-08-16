@@ -1,4 +1,4 @@
-import {removeIgnoreTaskLitsText, createTaskListText} from '../src/utils'
+import {removeIgnoreTaskLitsText } from '../src/utils'
 
 describe('removeIgnoreTaskLitsText', () => {
   it('removes multiple ignore task list from task list text.', () => {
@@ -47,52 +47,5 @@ describe('removeIgnoreTaskLitsText', () => {
     const result = removeIgnoreTaskLitsText(text)
 
     expect(result).toEqual('- [x] bar')
-  })
-})
-
-describe('createTaskListText', () => {
-  it('creates a list of completed tasks', () => {
-    const text = `## Issue Type
-    
-    
-    ## Checklist
-    - [x] I have read the [CONTRIBUTING.md]()
-    - [x] I have made corresponding changes to the documentation
-    - [x] My changes generate no lint errors
-    - [x] I have added tests that prove my fix is effective or that my feature works
-    - [x] New and existing unit tests pass locally with my changes`
-
-    const result = createTaskListText(text)
-
-    expect(result).toEqual(`## :white_check_mark: Completed Tasks
-- [x] I have read the [CONTRIBUTING.md]()
-- [x] I have made corresponding changes to the documentation
-- [x] My changes generate no lint errors
-- [x] I have added tests that prove my fix is effective or that my feature works
-- [x] New and existing unit tests pass locally with my changes
-`)
-  })
-
-  it('creates a list of completed tasks and uncompleted tasks', () => {
-    const text = `## Issue Type
-    
-    
-    ## Checklist
-    - [x] I have read the [CONTRIBUTING.md]()
-    - [ ] I have made corresponding changes to the documentation
-    - [x] My changes generate no lint errors
-    - [ ] I have added tests that prove my fix is effective or that my feature works
-    - [x] New and existing unit tests pass locally with my changes`
-
-    const result = createTaskListText(text)
-
-    expect(result).toEqual(`## :white_check_mark: Completed Tasks
-- [x] I have read the [CONTRIBUTING.md]()
-- [x] My changes generate no lint errors
-- [x] New and existing unit tests pass locally with my changes
-## :x: Uncompleted Tasks
-- [ ] I have made corresponding changes to the documentation
-- [ ] I have added tests that prove my fix is effective or that my feature works
-`)
   })
 })
