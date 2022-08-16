@@ -8,7 +8,8 @@ async function run(): Promise<void> {
     if (!body) {
       return
     }
-
+   
+    console.log({ body });
     const result = removeIgnoreTaskLitsText(body)
     const incompletedMatches = result.match(/(- \[[ ]\].+)/g);
     console.log({ incompletedMatches });
